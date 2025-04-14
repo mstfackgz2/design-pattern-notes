@@ -1,0 +1,60 @@
+1. Design Pattern Nedir?
+Tasarım desenleri (design patterns), yazılım geliştirme sürecinde karşılaşılan yaygın problemleri çözmek için geliştirilen,
+ tekrar kullanılabilir, test edilmiş ve kabul görmüş çözümlerdir.
+
+Problem: Diyelim ki bir nesneyi sadece bir kez üretmek istiyoruz (örn. bir database bağlantısı) → Herkes yeniden üretmesin.
+
+Çözüm: Singleton Pattern.
+
+🧠 Yani design pattern’ler hazır “çözüm tarifleri” gibidir.
+ Kopyala-yapıştır değil, ihtiyaç halinde uyarlanabilir şablonlardır.
+
+
+ Neden Design Pattern’lara İhtiyaç Duyarız?
+ 🎯 1. Tekrarlayan Problemler İçin Test Edilmiş Çözümler Sunar
+ Her yazılımcı bazı problemlerle tekrar tekrar karşılaşır:
+
+ Nesne yaratımı nasıl kontrol edilir?
+
+ Sınıflar arası iletişim nasıl sadeleşir?
+
+ Sistemin esnekliğini bozmadan davranışlar nasıl değiştirilebilir?
+
+ Bu sorunlara sıfırdan çözüm üretmek yerine, design pattern’ler bu problemler için kanıtlanmış çözümler sunar.
+
+ 🔧 2. Kodun Bakımını ve Genişletilmesini Kolaylaştırır
+ Kodda bir değişiklik gerektiğinde diğer parçaları bozmadan güncelleme yapmanı sağlar.
+
+ Takım çalışmasında başkalarının yazdığı kodu anlamanı kolaylaştırır çünkü çoğu kişi bu pattern’leri bilir.
+
+ 🧱 3. Nesneye Dayalı Programlamanın Gücünü Etkili Kullanır
+ Design pattern’ler sınıflar, nesneler ve onların ilişkileri üzerine kurulduğu için:
+
+ Nesneler arası sorumluluk paylaşımı yapılabilir,
+
+ Gevşek bağlı (loose coupled) bir yapı kurmanı sağlar,
+
+ Tek bir değişikliğin domino etkisi yaratmasını önler.
+
+ 🧩 4. SOLID ve DRY Gibi Yazılım Prensiplerini Destekler
+ Design pattern’ler çoğu zaman şu prensiplerle uyumludur:
+
+ S: Single Responsibility Principle
+
+ O: Open/Closed Principle
+
+ L: Liskov Substitution Principle
+
+ I: Interface Segregation Principle
+
+ D: Dependency Inversion Principle
+
+ Kısaca pattern’ler:
+
+ Hızlı çözüm sunar,
+
+ Kodun kalitesini artırır,
+
+ Ekip içinde anlaşılabilirliği kolaylaştırır,
+
+ Bakımı ve genişletmeyi kolaylaştırır.

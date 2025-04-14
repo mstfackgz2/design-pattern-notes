@@ -1,0 +1,78 @@
+🏭 Factory Method Design Pattern
+🎯 Amaç:
+Alt sınıfların hangi sınıfı örnekleyeceğine karar vermesine izin verirken, nesne yaratım sürecini soyutlamak.
+
+Yani:
+
+"Nesne oluşturmayı new ile doğrudan yapmak yerine, bu işi bir fabrikaya bırak!"
+
+🔧 Neden Gerekli?
+Normalde şöyle yaparız:
+
+
+Car car = new SedanCar();
+Ama bu, Main sınıfını SedanCar'a bağımlı yapar. İleride SUVCar ekleyince her yeri değiştirmek gerekir.
+
+Factory Method ile:
+
+
+CarFactory factory = new SedanCarFactory();
+Car car = factory.createCar();
+Gelecekte başka araba türü eklemek istersek sadece yeni bir factory yazmak yeterli olur. Kodun geri kalanına dokunmayız.
+
+👷 Temel Yapı
+1. Product (Ortak Arayüz / Soyut Sınıf)
+
+public interface Car {
+    void drive();
+}
+2. ConcreteProduct (Gerçek Sınıflar)
+
+public class SedanCar implements Car {
+    public void drive() {
+        System.out.println("Sedan araba sürülüyor.");
+    }
+}
+
+public class SuvCar implements Car {
+    public void drive() {
+        System.out.println("SUV araba sürülüyor.");
+    }
+}
+3. Creator (Soyut Factory)
+
+public abstract class CarFactory {
+    public abstract Car createCar(); // Factory Method
+}
+4. ConcreteCreator (Gerçek Factory Sınıflar)
+
+public class SedanCarFactory extends CarFactory {
+    public Car createCar() {
+        return new SedanCar();
+    }
+}
+
+public class SuvCarFactory extends CarFactory {
+    public Car createCar() {
+        return new SuvCar();
+    }
+}
+5. Kullanım:
+
+public class Main {
+    public static void main(String[] args) {
+        CarFactory sedanFactory = new SedanCarFactory();
+        Car sedan = sedanFactory.createCar();
+        sedan.drive(); // Sedan araba sürülüyor.
+
+        CarFactory suvFactory = new SuvCarFactory();
+        Car suv = suvFactory.createCar();
+        suv.drive(); // SUV araba sürülüyor.
+    }
+}
+📦 Avantajları:
+Nesne oluşturma kodu soyutlanır, sistem esnekleşir.
+
+Yeni ürünler kolayca eklenebilir.
+
+Open/Closed Principle’a uygundur (yenilik açık, değişikliğe kapalı).

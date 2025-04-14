@@ -1,0 +1,118 @@
+Singleton Design Pattern
+Amaç: Bir sınıfın yalnızca bir örneği (instance) olmasını sağlamak ve bu örneğe evrensel bir erişim noktası sunmak.
+
+🎯 Nerede Kullanılır?
+Database bağlantısı (tek bağlantı noktası)
+
+Logger (tek loglama servisi)
+
+Konfigürasyon ayarları (global ayarlar)
+
+Thread pool, cache yöneticisi gibi sistem kaynakları
+
+Düşünsene her loglama işleminde yeni bir logger nesnesi oluşturuyorsun:
+
+Bu hem kaynak israfı hem de tutarsızlık demek. Logger tüm uygulama boyunca aynı nesne olmalı.
+
+Dikkat Edilmesi Gerekenler:
+Çoklu thread ortamında güvenli değilse synchronized kullanmak gerekebilir.
+
+Lazy (ihtiyaç anında yaratılan) ya da eager (başta yaratılan) olabilir.
+
+Thread-Safe Singleton
+Problem:
+Çoklu thread ortamında (özellikle web uygulamaları, servisler gibi çok kullanıcılı yapılarda) birden fazla thread aynı
+ anda getInstance() metodunu çağırırsa, birden fazla Singleton nesnesi oluşabilir. Bu da Singleton mantığını bozar.
+
+
+ Riskli Durum Örneği:
+java
+Kopyala
+Düzenle
+if (instance == null) {
+    instance = new Singleton(); // iki thread aynı anda buraya girebilir
+}
+✅ Çözüm 1: synchronized ile Method Kilitleme
+java
+Kopyala
+Düzenle
+public class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {}
+
+    public static synchronized Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+💡 Artı: Kolay ve güvenli
+😕 Eksi: Her çağrıda kilitlenir, performansı biraz düşürür
+
+✅ Çözüm 2: Double-Checked Locking
+java
+Kopyala
+Düzenle
+public class Singleton {
+    private static volatile Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) { // birinci kontrol
+            synchronized (Singleton.class) {
+                if (instance == null) { // ikinci kontrol
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+💡 Artı: Sadece ilk yaratımda kilit kullanılır
+⚠️ volatile olmazsa JVM optimizasyonları problemi doğurabilir
+
+✅ Çözüm 3: Eager Initialization (Tembel Olmayan)
+java
+Kopyala
+Düzenle
+public class Singleton {
+    private static final Singleton instance = new Singleton();
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        return instance;
+    }
+}
+💡 Artı: Çok basit ve thread-safe
+😕 Eksi: Uygulama başlarken hemen oluşur, her zaman ihtiyaç olmayabilir
+
+✅ Çözüm 4: Static Inner Class (En Temiz Çözüm)
+java
+Kopyala
+Düzenle
+public class Singleton {
+
+    private Singleton() {}
+
+    private static class Holder {
+        private static final Singleton INSTANCE = new Singleton();
+    }
+
+    public static Singleton getInstance() {
+        return Holder.INSTANCE;
+    }
+}
+💡 Avantajı:
+
+Lazy (ihtiyaç olunca oluşturur)
+
+Thread-safe
+
+Performansı yüksek
+
+Bu çözümlerden uygulamana göre en uygun olanı seçebilirsin.
+Java’da genelde static inner class yöntemi tercih edilir çünkü sade ve güvenlidir.
