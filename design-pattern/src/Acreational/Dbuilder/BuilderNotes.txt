@@ -1,0 +1,25 @@
+🧱 Builder Pattern
+🎯 Amaç:
+Karmaşık nesneleri adım adım kurmak için kullanılır.
+Tüm constructor parametrelerini bir anda vermek yerine, daha okunabilir ve esnek şekilde nesne oluşturmanı sağlar.
+
+👀 Ne Zaman Kullanılır?
+Çok fazla parametre varsa (bazıları opsiyonel olabilir)
+
+Kod okunabilirliği önemliyse
+
+Immutable (değiştirilemez) nesneler oluşturulacaksa
+
+✅ Avantajlar
+Kod okunabilir ve anlaşılır olur
+
+Zorunlu alanlarla opsiyonel alanlar ayrılır
+
+Immutable (değiştirilemez) nesneler üretmeye uygundur
+
+Telafi edilemeyen constructor zincirlerini önler
+
+⛔ Dezavantajları
+Sınıfa biraz daha fazla kod (özellikle iç sınıf) eklenir
+
+Küçük sınıflarda gereksiz soyutlama olabilir

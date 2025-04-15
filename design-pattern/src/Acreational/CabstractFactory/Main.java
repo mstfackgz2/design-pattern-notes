@@ -1,6 +1,5 @@
-package Acreational;
+package Acreational.CabstractFactory;
 
-import Acreational.CabstractFactory.App;
 import Acreational.CabstractFactory.factories.MacFactory;
 import Acreational.CabstractFactory.factories.WinowsFactory;
 import Acreational.CabstractFactory.interfaces.GUIFactory;

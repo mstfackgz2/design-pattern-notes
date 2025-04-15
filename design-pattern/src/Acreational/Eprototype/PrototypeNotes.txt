@@ -1,0 +1,30 @@
+🧬 Prototype Pattern
+🎯 Amaç:
+Bir nesnenin kopyasını (klonunu) oluşturarak yeni bir nesne yaratmak.
+Özellikle nesne oluşturma maliyetli olduğunda kullanılır.
+
+👀 Ne Zaman Kullanılır?
+Nesne oluşturmak karmaşık ya da pahalı ise (örneğin çok veri yüklüyorsa)
+
+Aynı nesneden birçok kopya üretmek gerekiyorsa
+
+Nesne oluşturulurken konfigürasyon gerektiriyorsa
+
+🔁 Klonlama Mantığı
+Java’da clone() metodu ve Cloneable arayüzü üzerinden çalışır.
+✅ Avantajları
+Karmaşık nesne oluşturma sürecini tekrar etmene gerek kalmaz
+
+Aynı yapıdaki birçok nesne hızlıca oluşturulabilir
+
+Runtime’da konfigürasyonlara göre yeni nesneler oluşturabilirsin
+
+⚠️ Dikkat: clone() kullanırken
+Derin kopya (deep copy) – İç içe nesneler varsa dikkatli ol!
+
+Cloneable arayüzü zorunlu değil ama Java’da Object.clone() için önerilir
+
+Java’nın clone() metodu protected olduğu için override gerekir
+
+🧪 Derin Kopya Örneği
+Eğer Circle içinde başka bir nesne varsa (Point, Style gibi), onun da clone() yapması gerekir. Yoksa aynı referansı kopyalarsın.

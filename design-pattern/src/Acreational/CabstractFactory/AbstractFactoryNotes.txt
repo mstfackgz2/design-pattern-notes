@@ -1,0 +1,13 @@
+🎯 Amaç:
+Birbiriyle ilişkili nesneleri bir arada üretmek için kullanılan fabrika fabrikası.
+
+Yani:
+
+Sadece tek bir nesne değil, birlikte çalışan nesne ailelerini üret.
+
+👀 Ne Zaman Kullanılır?
+Birbiriyle ilişkili ürün grupları varsa (örnek: UI bileşenleri: buton, textbox, checkbox vs.)
+
+Platforma özel ürünlerin oluşturulması gerekiyorsa (örnek: Windows vs Mac arayüzleri)
+
+Üretim sürecini soyutlamak istiyorsan
