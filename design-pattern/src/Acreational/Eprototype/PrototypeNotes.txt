@@ -11,7 +11,7 @@ Aynı nesneden birçok kopya üretmek gerekiyorsa
 Nesne oluşturulurken konfigürasyon gerektiriyorsa
 
 🔁 Klonlama Mantığı
-Java’da clone() metodu ve Cloneable arayüzü üzerinden çalışır.
+Java’da clone( ) metodu ve Cloneable arayüzü üzerinden çalışır.
 ✅ Avantajları
 Karmaşık nesne oluşturma sürecini tekrar etmene gerek kalmaz
 
